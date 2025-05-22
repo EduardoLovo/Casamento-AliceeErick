@@ -1,0 +1,38 @@
+.content-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    flex-wrap: wrap;
+}
+
+.titulo-login {
+    font-family: 'Ballet', cursive;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 10vw;
+    text-align: center;
+    color: #d3c013;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .content-login {
+        gap: 50px;
+        height: auto;
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-login {
+        gap: 30px;
+        flex-direction: column;
+        height: auto;
+        padding: 10px 10px;
+    }
+    .titulo-login {
+        font-size: 15vw;
+    }
+}

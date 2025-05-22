@@ -1,0 +1,33 @@
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 300px;
+    height: 80px;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.c-loader {
+    animation: is-rotating 1s infinite;
+    border: 6px solid #474747;
+    border-radius: 50%;
+    border-top-color: #51d4db;
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+}
+
+@keyframes is-rotating {
+    to {
+        transform: rotate(1turn);
+    }
+}

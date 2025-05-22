@@ -1,0 +1,113 @@
+.content-confirmar-presenca {
+    min-height: 100vh;
+    padding: 100px;
+    /* margin: 50px; */
+    background-color: rgba(0, 0, 0, 0.26);
+}
+
+.content-confirmar-presenca button {
+    margin: 25px 0 0 25px;
+    width: 200px;
+    height: 50px;
+    background-color: #daa520;
+    border: 1px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.content-confirmar-presenca button:hover {
+    background-color: #bb8d1b;
+}
+
+.content-confirmar-presenca form {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-confirmar-presenca form label {
+    padding: 15px;
+}
+
+.content-confirmar-presenca form textarea {
+    padding: 5px;
+}
+
+.btnPresenca {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    width: 80vw;
+}
+
+.btnPresenca img {
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+}
+
+.btnPresenca p {
+    padding: 15px;
+}
+
+.titulo-confirmar-presenca {
+    display: flex;
+    align-items: flex-start;
+    font-family: 'Tangerine', cursive;
+    font-size: 50px;
+}
+
+.nome-do-usuario {
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.whats-confirmar {
+    display: flex;
+}
+
+.whats-confirmar label {
+    margin: 5px;
+}
+.whats-confirmar input {
+    padding: 5px;
+}
+.companions {
+    display: flex;
+    flex-direction: column;
+}
+
+.companions input {
+    margin: 1rem;
+    padding: 5px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .content-confirmar-presenca {
+        padding: 60px 20px;
+    }
+
+    .content-confirmar-presenca button {
+        width: 100%;
+        max-width: 200px;
+        margin: 20px auto 0 auto;
+        display: block;
+    }
+
+    .titulo-confirmar-presenca {
+        font-size: 25px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .btnPresenca {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .btnPresenca img {
+        width: 150px;
+    }
+}

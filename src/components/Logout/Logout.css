@@ -1,0 +1,14 @@
+.botaoSair {
+    width: 100px;
+    height: 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    font-size: 1.2rem;
+    color: aliceblue;
+}
+
+.botaoSair:hover {
+    text-decoration: underline #d3c013;
+}

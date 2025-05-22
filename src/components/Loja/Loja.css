@@ -1,0 +1,93 @@
+.content-loja h2 {
+    padding: 20px 80px;
+    font-size: 5rem;
+    color: #d3c013;
+    font-family: 'Tangerine', cursive;
+}
+/* Responsivo para h2 */
+@media (max-width: 768px) {
+    .content-loja h2 {
+        font-size: 3.5rem;
+        padding: 20px 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-loja h2 {
+        font-size: 2.8rem;
+        padding: 15px 20px;
+    }
+}
+.list-product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 0;
+}
+.card-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 350px;
+    height: 500px;
+    padding: 15px;
+    border-bottom: 1px solid #daa520;
+
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.card-product:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.274);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.card-product img {
+    max-height: 300px;
+}
+
+/* Responsivo para card */
+@media (max-width: 768px) {
+    .card-product {
+        width: 300px;
+        height: 450px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-product {
+        width: 90%;
+        height: auto;
+    }
+
+    .card-product img {
+        max-height: 200px;
+    }
+}
+
+.card-product p {
+    height: 50px;
+    text-align: center;
+    padding: 5px;
+}
+
+.card-product .preco {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.card-product button {
+    width: 100px;
+    /* height: 30px; */
+    background-color: transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    border: 1px solid;
+}
+
+.card-product button:hover {
+    cursor: pointer;
+    background-color: #daa520;
+    transition: box-shadow 0.3s ease;
+}

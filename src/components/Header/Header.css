@@ -1,0 +1,51 @@
+.cabecalho {
+    background-color: #0c0b0ba9;
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding-right: 20px;
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* garante que fique acima do conteúdo */
+}
+
+.cabecalho div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.content-cabecalho button {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #d3c013;
+    font-family: 'Tangerine', cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.content-cabecalho button:hover {
+    color: #d3c013;
+    text-decoration: underline #d3c013;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .cabecalho {
+        gap: 5px;
+        padding: 0 10px;
+        font-size: 1rem;
+        height: 10vh; /* aumenta um pouco a altura para acomodar */
+    }
+
+    .content-cabecalho button {
+        font-size: 1.2rem;
+    }
+}

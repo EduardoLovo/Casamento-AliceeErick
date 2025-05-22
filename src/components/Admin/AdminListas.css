@@ -1,0 +1,51 @@
+.content-listas-admin {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.content-listas-admin ul {
+    width: 90vw;
+    padding: 0 1rem;
+}
+
+.cardMensagem {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+}
+
+.cardMensagem h2 {
+    padding: 10px;
+}
+
+.cardMensagem div {
+    min-height: 200px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .cardMensagem {
+        width: 95vw;
+    }
+
+    .cardMensagem h2 {
+        font-size: 1.3rem;
+    }
+
+    .cardMensagem div {
+        min-height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cardMensagem h2 {
+        font-size: 1.1rem;
+    }
+
+    .cardMensagem div {
+        min-height: 120px;
+    }
+}
