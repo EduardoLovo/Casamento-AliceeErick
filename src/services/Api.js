@@ -2,11 +2,11 @@ import axios from 'axios';
 import { JwtHandler } from './jwt_handler';
 
 export const Api = {
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://casamento-api-seven.vercel.app',
 
     // Rota Login
-    loginUrl: () => `${Api.baseUrl}/auth/login/`,
-    registerUrl: () => `${Api.baseUrl}/auth/register/`,
+    loginUrl: () => `${Api.baseUrl}/auth/login`,
+    registerUrl: () => `${Api.baseUrl}/auth/register`,
 
     // Rotas
     readAllUrl: (rota) => Api.baseUrl + `/${rota}`,
