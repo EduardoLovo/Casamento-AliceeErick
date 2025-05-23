@@ -9,52 +9,98 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
-    // Mova a verificação para dentro de um useEffect
+    // Verificação de login automático
     useEffect(() => {
         const isLogged = JwtHandler.isJwtValid();
         if (isLogged) {
             navigate('/');
         }
-    }, [navigate]); // Adicione navigate como dependência
+    }, [navigate]);
+
+    // Função para carregar o script do reCAPTCHA
+    const loadReCaptchaScript = () => {
+        return new Promise((resolve, reject) => {
+            if (window.grecaptcha) {
+                resolve();
+                return;
+            }
+            const siteKey = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
+            if (!siteKey) {
+                reject(
+                    new Error('REACT_APP_RECAPTCHA_SITE_KEY não está definido')
+                );
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+            script.async = true;
+            script.defer = true;
+            script.onload = () => resolve();
+            script.onerror = () =>
+                reject(new Error('Falha ao carregar script do reCAPTCHA'));
+            document.body.appendChild(script);
+        });
+    };
+
+    // Carrega o script ao montar o componente
+    useEffect(() => {
+        loadReCaptchaScript().catch((err) => {
+            console.error(err);
+            setError('Erro ao carregar reCAPTCHA');
+        });
+    }, []);
 
     const handleLogin = async (e) => {
         e.preventDefault();
         setIsLoading(true);
+        setError('');
+
         try {
-            // Faz a requisição de login
+            // Garante que o script do reCAPTCHA esteja carregado
+            await loadReCaptchaScript();
+
+            const siteKey = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
+            if (!window.grecaptcha || !siteKey) {
+                throw new Error('reCAPTCHA não disponível');
+            }
+
+            // Executa o reCAPTCHA para obter o token fresco
+            const recaptchaToken = await window.grecaptcha.execute(siteKey, {
+                action: 'login',
+            });
+
+            // Envia o login para o backend junto com o token do reCAPTCHA
             const response = await Api.post(Api.loginUrl(), {
                 email,
                 password,
+                recaptchaToken,
             });
 
-            // Armazena o token JWT no localStorage
             JwtHandler.setJwt(response.data.token);
-
             localStorage.setItem('user', JSON.stringify(response.data.user));
 
-            // Redireciona para a página protegida
             navigate('/home');
             window.location.reload();
-            // console.log('login efetuado');
-            setIsLoading(false);
         } catch (error) {
-            setError('Credenciais inválidas. Tente novamente.');
             console.error('Erro no login:', error);
+            setError('Credenciais inválidas ou erro no reCAPTCHA.');
+        } finally {
             setIsLoading(false);
         }
     };
 
     return (
-        <div className="">
+        <div>
             {isLoading && <Loading />}
             {error && <p style={{ color: 'red' }}>{error}</p>}
 
             <form onSubmit={handleLogin} className="formulario-login">
                 <h1>Login</h1>
+
                 <label>Email:</label>
                 <input
                     type="text"

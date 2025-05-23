@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import '../AdminListas.css';
-import { Api } from '../../../services/Api';
-import { Loading } from '../../Loading/Loading';
+import './AdminListas.css';
+import { Api } from '../../services/Api';
+import { Loading } from '../Loading/Loading';
 
-export const ListaDeConfirmados = () => {
+export const ListAllConfirmeds = () => {
     const [usuarios, setUsuarios] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
 
     const loadData = async () => {
         try {
-            const response = await Api.get(Api.readAllUrl('companions'), true);
+            const response = await Api.get(
+                Api.listAllConfirmedsUrl('companions'),
+                true
+            );
             setUsuarios(response.data);
             setIsLoading(false);
         } catch (error) {
@@ -31,7 +34,7 @@ export const ListaDeConfirmados = () => {
             {usuarios.map((usuario, index) => (
                 <div key={index}>
                     {usuario.presence && (
-                        <ul className="cardMensagem">
+                        <ul>
                             <li>
                                 <strong>{usuario.name}</strong>
                                 <strong> - Whatsapp: {usuario.fone}</strong>
@@ -48,7 +51,6 @@ export const ListaDeConfirmados = () => {
                                         </ul>
                                     )}
                             </li>
-                            <hr />
                         </ul>
                     )}
                 </div>

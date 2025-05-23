@@ -2,7 +2,8 @@ import axios from 'axios';
 import { JwtHandler } from './jwt_handler';
 
 export const Api = {
-    baseUrl: 'https://casamento-api-seven.vercel.app',
+    // baseUrl: 'https://casamento-api-seven.vercel.app',
+    baseUrl: 'http://localhost:3000',
 
     // Rota Login
     loginUrl: () => `${Api.baseUrl}/auth/login`,
@@ -14,6 +15,9 @@ export const Api = {
     readByIdUrl: (rota, id) => Api.baseUrl + `/${rota}/` + id,
     updateUrl: (rota, id) => Api.baseUrl + `/${rota}/` + id,
     deleteUrl: (rota, id) => Api.baseUrl + `/${rota}/` + id,
+
+    listAllConfirmedsUrl: (rota) =>
+        Api.baseUrl + `/${rota}/lista-de-confirmados`,
 
     // Configuração do token para requisições autenticadas
     authConfig: () => {

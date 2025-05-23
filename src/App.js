@@ -3,10 +3,10 @@ import './App.css';
 import { LoginRegister } from './pages/LoginRegister/LoginRegister';
 import PrivateRoute from './components/PrivateRoute';
 import { Home } from './pages/Home/Home';
-import { Header } from './components/Header/Header';
 import { ConfirmarPresenca } from './pages/ConfirmarPresenca/ConfirmarPresenca';
 import { Checkout } from './pages/Checkout/Checkout';
 import { Admin } from './pages/Admin/Admin';
+import { ListAllConfirmeds } from './components/Admin/listAllConfimeds';
 
 function App() {
     return (
@@ -15,6 +15,10 @@ function App() {
                 {/* <Header /> */}
                 <Routes>
                     <Route path="/" element={<LoginRegister />} />
+                    <Route
+                        path="/lista-de-confirmados"
+                        element={<ListAllConfirmeds />}
+                    />
                     <Route
                         path="/home"
                         element={
