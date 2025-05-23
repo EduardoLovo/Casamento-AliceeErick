@@ -34,7 +34,7 @@ export const ListAllConfirmeds = () => {
             {usuarios.map((usuario, index) => (
                 <div key={index}>
                     {usuario.presence && (
-                        <ul>
+                        <ul className="cardMensagem">
                             <li>
                                 <strong>{usuario.name}</strong>
                                 <strong> - Whatsapp: {usuario.fone}</strong>
@@ -51,6 +51,7 @@ export const ListAllConfirmeds = () => {
                                         </ul>
                                     )}
                             </li>
+                            <hr />
                         </ul>
                     )}
                 </div>
