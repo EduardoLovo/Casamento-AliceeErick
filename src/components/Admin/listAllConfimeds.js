@@ -11,8 +11,7 @@ export const ListAllConfirmeds = () => {
     const loadData = async () => {
         try {
             const response = await Api.get(
-                Api.listAllConfirmedsUrl('companions'),
-                true
+                Api.listAllConfirmedsUrl('companions')
             );
             setUsuarios(response.data);
             setIsLoading(false);
