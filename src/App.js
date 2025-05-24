@@ -22,7 +22,7 @@ function App() {
                     <Route
                         path="/home"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/">
                                 <Home />
                             </PrivateRoute>
                         }
@@ -30,7 +30,7 @@ function App() {
                     <Route
                         path="/confirmar-presenca"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/">
                                 <ConfirmarPresenca />
                             </PrivateRoute>
                         }
@@ -38,7 +38,7 @@ function App() {
                     <Route
                         path="/checkout"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/">
                                 <Checkout />
                             </PrivateRoute>
                         }
@@ -46,7 +46,7 @@ function App() {
                     <Route
                         path="/admin"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/">
                                 <Admin />
                             </PrivateRoute>
                         }
