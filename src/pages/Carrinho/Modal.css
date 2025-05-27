@@ -31,13 +31,13 @@
     top: 10px;
     right: 15px;
     font-size: 18px;
-    background: none;
     border: none;
     cursor: pointer;
     z-index: 10;
     display: inline-block; /* ← força o comportamento correto */
-
     margin: 0; /* ← remove qualquer centralização acidental */
+    width: 100%;
+   
 }
 
 /* Garantir que imagens como QRCode se adaptem bem */

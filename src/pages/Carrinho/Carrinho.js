@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Carrinho.css';
-import '../Checkout/Checkout.css';
+// import '../Checkout/Checkout.css';
 import { Api } from '../../services/Api';
 import Modal from './Modal';
 
@@ -153,7 +153,10 @@ export const Carrinho = () => {
                                 <p>Preço: R$ {product?.price?.toFixed(2)}</p>
                                 <p>Pagamento: {paymentMethod}</p>
                                 <p>Confirme para gerar o código</p>
-                                <button onClick={confirmarCompra}>
+                                <button
+                                    className="confirmarbtn"
+                                    onClick={confirmarCompra}
+                                >
                                     Confirmar
                                 </button>
                             </div>
@@ -267,7 +270,7 @@ export const Carrinho = () => {
                 </Modal>
             )}
 
-            {isConfirmed && <p>Compra confirmada com {paymentMethod}!</p>}
+            {/* {isConfirmed && <p>Compra confirmada com {paymentMethod}!</p>} */}
             {status && <p>{status}</p>}
         </div>
     );
