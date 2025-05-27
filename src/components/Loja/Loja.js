@@ -35,7 +35,7 @@ export const Loja = () => {
                         <img src={product.image} alt="imagem do produto" />
                         <p>{product.name}</p>
                         <p className="preco">R$ {product.price.toFixed(2)}</p>
-                        <Link to="/checkout" state={{ product }}>
+                        <Link to="/carrinho" state={{ product }}>
                             <button>Comprar</button>
                         </Link>
                     </div>

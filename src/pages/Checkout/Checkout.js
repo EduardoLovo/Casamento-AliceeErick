@@ -4,10 +4,6 @@ import './Checkout.css';
 import { Api } from '../../services/Api';
 
 export const Checkout = () => {
-    const userData = localStorage.getItem('user');
-    const user = userData ? JSON.parse(userData) : null;
-    console.log(user.id);
-
     const [paymentMethod, setPaymentMethod] = useState('');
     const [isConfirmed, setIsConfirmed] = useState(false);
     const [status, setStatus] = useState('');

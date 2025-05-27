@@ -44,15 +44,42 @@ Api.instance = axios.create({
 });
 
 // Métodos que usam a instance
-Api.get = (url, auth = false) =>
-    Api.instance.get(url, auth ? Api.authConfig() : {});
-Api.post = (url, body, auth = false) => {
-    const config = auth ? Api.authConfig() : {};
-    return Api.instance.post(url, body, config);
+Api.post = async (url, body, auth = false) => {
+    try {
+        const config = auth ? Api.authConfig() : {};
+        return await Api.instance.post(url, body, config);
+    } catch (error) {
+        console.error('Erro em Api.post:', error);
+        throw error;
+    }
 };
-Api.patch = (url, body, auth = false) => {
-    const config = auth ? Api.authConfig() : {};
-    return Api.instance.patch(url, body, config);
+
+Api.patch = async (url, body, auth = false) => {
+    try {
+        const config = auth ? Api.authConfig() : {};
+        return await Api.instance.patch(url, body, config);
+    } catch (error) {
+        console.error('Erro em Api.patch:', error);
+        throw error;
+    }
 };
-Api.delete = (url, auth = false) =>
-    Api.instance.delete(url, auth ? Api.authConfig() : {});
+
+Api.get = async (url, auth = false) => {
+    try {
+        const config = auth ? Api.authConfig() : {};
+        return await Api.instance.get(url, config);
+    } catch (error) {
+        console.error('Erro em Api.get:', error);
+        throw error;
+    }
+};
+
+Api.delete = async (url, auth = false) => {
+    try {
+        const config = auth ? Api.authConfig() : {};
+        return await Api.instance.delete(url, config);
+    } catch (error) {
+        console.error('Erro em Api.delete:', error);
+        throw error;
+    }
+};

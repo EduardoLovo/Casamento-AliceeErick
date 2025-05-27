@@ -7,6 +7,7 @@ import { ConfirmarPresenca } from './pages/ConfirmarPresenca/ConfirmarPresenca';
 import { Checkout } from './pages/Checkout/Checkout';
 import { Admin } from './pages/Admin/Admin';
 import { ListAllConfirmeds } from './components/Admin/listAllConfimeds';
+import { Carrinho } from './pages/Carrinho/Carrinho';
 
 function App() {
     return (
@@ -48,6 +49,14 @@ function App() {
                         element={
                             <PrivateRoute redirectTo="/">
                                 <Admin />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/carrinho"
+                        element={
+                            <PrivateRoute redirectTo="/">
+                                <Carrinho />
                             </PrivateRoute>
                         }
                     />
