@@ -16,6 +16,8 @@ export const Api = {
     updateUrl: (rota, id) => Api.baseUrl + `/${rota}/` + id,
     deleteUrl: (rota, id) => Api.baseUrl + `/${rota}/` + id,
 
+    checkoutUrl: () => `${Api.baseUrl}/checkout`,
+
     listAllConfirmedsUrl: (rota) =>
         Api.baseUrl + `/${rota}/lista-de-confirmados`,
 

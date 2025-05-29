@@ -4,10 +4,11 @@ import './Carrinho.css';
 // import '../Checkout/Checkout.css';
 import { Api } from '../../services/Api';
 import Modal from './Modal';
+import { InputMask } from '@react-input/mask';
 
 export const Carrinho = () => {
     const [paymentMethod, setPaymentMethod] = useState('');
-    const [isConfirmed, setIsConfirmed] = useState(false);
+    // const [isConfirmed, setIsConfirmed] = useState(false);
     const [status, setStatus] = useState('');
     const [pix, setPix] = useState(false);
     const [codigoCopiado, setCodigoCopiado] = useState('');
@@ -59,7 +60,6 @@ export const Carrinho = () => {
                     true // se esse argumento é para usar Authorization, mantenha
                 );
 
-                setIsConfirmed(true);
                 console.log('Compra realizada');
             } catch (error) {
                 console.error('Erro ao realizar compra:', error);
@@ -71,39 +71,41 @@ export const Carrinho = () => {
     const handleCartaoSubmit = async (e) => {
         e.preventDefault();
 
+        // Separar mês e ano da validade (ex: "05/26")
         const [mes, ano] = validade.split('/');
 
-        const pagamentoData = {
-            nome: nomeCartao,
-            numero: numeroCartao,
-            validadeMes: mes,
-            validadeAno: '20' + ano,
-            cvv: cvv,
-            bandeira: bandeira,
-            valor: product?.price,
-            parcelas: parcelas,
-            produtoId: product?.id,
+        console.log(mes, ano);
+
+        const dadosCartao = {
+            cardNumber: numeroCartao,
+            expirationMonth: mes,
+            expirationYear: '20' + ano,
+            securityCode: cvv,
+            cardholderName: nomeCartao,
         };
 
+        const payload = {
+            productId: product?.id,
+            paymentMethod: 'credit_card',
+            dadosCartao: dadosCartao,
+            generateToken: true,
+            installments: parcelas, // Número de parcelas desejado
+        };
+
+        console.log();
+
         try {
-            const response = await fetch('/api/pagamento/cartao', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(pagamentoData),
-            });
+            await Api.post(Api.checkoutUrl(), payload, true);
 
-            const resultado = await response.json();
-
-            if (response.ok) {
-                alert('Pagamento realizado com sucesso!');
-                setIsConfirmed(true);
-                setModalAberto(false);
-            } else {
-                alert('Erro: ' + resultado.mensagem);
-            }
+            alert('Pagamento realizado com sucesso!');
+            setModalAberto(false);
         } catch (error) {
             console.error(error);
-            alert('Erro ao processar o pagamento');
+
+            const msg =
+                error?.response?.data?.message ||
+                'Erro ao processar o pagamento';
+            alert(`Erro: ${msg}`);
         }
     };
 
@@ -207,14 +209,16 @@ export const Carrinho = () => {
 
                             <label>
                                 Validade (MM/AA):
-                                <input
-                                    type="text"
+                                <InputMask
+                                    mask="99/99"
+                                    replacement={{ 9: /\d/ }}
                                     value={validade}
                                     onChange={(e) =>
                                         setValidade(e.target.value)
                                     }
                                     placeholder="MM/AA"
                                     required
+                                    className='inputmask'
                                 />
                             </label>
 
