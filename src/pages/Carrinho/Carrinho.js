@@ -146,15 +146,17 @@ export const Carrinho = () => {
                     />
                     Pix
                 </label>
-                <label>
-                    <input
-                        type="radio"
-                        value="cartao"
-                        checked={paymentMethod === 'cartao'}
-                        onChange={() => setPaymentMethod('cartao')}
-                    />
-                    Cartão de Credito
-                </label>
+                {product?.id !== '680fdc46fb29fd1d390b0a7c' && (
+                    <label>
+                        <input
+                            type="radio"
+                            value="cartao"
+                            checked={paymentMethod === 'cartao'}
+                            onChange={() => setPaymentMethod('cartao')}
+                        />
+                        Cartão de Credito
+                    </label>
+                )}
 
                 <button type="submit">Confirmar Compra</button>
             </form>
