@@ -5,8 +5,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
-    padding-right: 20px;
     font-size: 1.2rem;
     color: rgb(255, 255, 255);
     position: fixed;
@@ -15,12 +13,14 @@
     z-index: 1000; /* garante que fique acima do conteúdo */
 }
 
-.cabecalho div {
+.botoes-direita {
     display: flex;
     justify-content: flex-end;
 }
 
-.content-cabecalho button {
+.cabecalho button {
+    display: flex;
+    justify-content: flex-start;
     background: none;
     border: none;
     font-size: 30px;
@@ -31,21 +31,25 @@
     font-style: normal;
 }
 
-.content-cabecalho button:hover {
+.cabecalho button:hover {
     color: #d3c013;
     text-decoration: underline #d3c013;
 }
 
-/* RESPONSIVO */
+.link-cabecalho {
+    width: 200px;
+}
+
 @media (max-width: 768px) {
     .cabecalho {
-        gap: 5px;
-        padding: 0 10px;
-        font-size: 1rem;
-        height: 10vh; /* aumenta um pouco a altura para acomodar */
+        height: 8vh;
     }
 
-    .content-cabecalho button {
+    .cabecalho button {
         font-size: 1.2rem;
+    }
+
+    .link-cabecalho {
+        width: 150px;
     }
 }

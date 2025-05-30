@@ -4,11 +4,9 @@ import './Carrinho.css';
 // import '../Checkout/Checkout.css';
 import { Api } from '../../services/Api';
 import Modal from './Modal';
-import { InputMask } from '@react-input/mask';
 
 export const Carrinho = () => {
     const [paymentMethod, setPaymentMethod] = useState('');
-    // const [isConfirmed, setIsConfirmed] = useState(false);
     const [status, setStatus] = useState('');
     const [pix, setPix] = useState(false);
     const [codigoCopiado, setCodigoCopiado] = useState('');
@@ -107,6 +105,22 @@ export const Carrinho = () => {
                 'Erro ao processar o pagamento';
             alert(`Erro: ${msg}`);
         }
+    };
+
+    const handleChange = (e) => {
+        let input = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+
+        // Limita a 4 caracteres
+        if (input.length > 4) {
+            input = input.substring(0, 4);
+        }
+
+        // Adiciona a barra após 2 dígitos
+        if (input.length > 2) {
+            input = input.substring(0, 2) + '/' + input.substring(2);
+        }
+
+        setValidade(input);
     };
 
     return (
@@ -209,19 +223,15 @@ export const Carrinho = () => {
 
                             <label>
                                 Validade (MM/AA):
-                                <InputMask
-                                    mask="99/99"
-                                    replacement={{ 9: /\d/ }}
+                                <input
                                     value={validade}
-                                    onChange={(e) =>
-                                        setValidade(e.target.value)
-                                    }
+                                    onChange={handleChange}
                                     placeholder="MM/AA"
+                                    maxLength="5" // MM/AA = 5 caracteres (incluindo a barra)
                                     required
-                                    className='inputmask'
+                                    className="inputmask"
                                 />
                             </label>
-
                             <label>
                                 CVV:
                                 <input
