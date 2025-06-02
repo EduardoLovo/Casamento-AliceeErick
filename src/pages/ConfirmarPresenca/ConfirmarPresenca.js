@@ -10,22 +10,35 @@ export const ConfirmarPresenca = () => {
     const [status, setStatus] = useState('');
     const [companions, setCompanions] = useState([]);
     const [fone, setFone] = useState('');
+    const [matrix, setMatrix] = useState(null);
+    const [error, setError] = useState('');
 
     const confirmarPresenca = async (e) => {
         e.preventDefault();
+
+        const telefoneRegex = /^\(?\d{2}\)?[\s-]?\d{5}-?\d{4}$/;
 
         if (!user) {
             setStatus('Usuário não encontrado.');
             return;
         }
+        if (!telefoneRegex.test(fone)) {
+            alert('Por favor, insira um número de telefone válido com DDD.');
+            return;
+        }
 
+        if (matrix === null) {
+            setError('Por favor, selecione uma opção.');
+            return;
+        }
+        setError('');
         const newPresence = !user.presence;
 
         try {
             // Atualiza a presença do usuário
             await Api.patch(
                 Api.updateUrl('users', user.id),
-                { presence: newPresence, fone: fone },
+                { presence: newPresence, fone: fone, matrix: matrix },
                 true
             );
 
@@ -111,10 +124,17 @@ export const ConfirmarPresenca = () => {
                 <p>confirme sua presença</p>
             </div>
 
-            <div className="btnPresenca">
+            <form onSubmit={confirmarPresenca} className="btnPresenca">
                 <div className="whats-confirmar">
                     <label>Telefone whatsapp</label>
-                    <input onChange={(e) => setFone(e.target.value)} />
+                    <input
+                        type="tel"
+                        required
+                        pattern="^\(?\d{2}\)?[\s-]?\d{5}-?\d{4}$"
+                        value={fone}
+                        onChange={(e) => setFone(e.target.value)}
+                        placeholder="(99) 99999-9999"
+                    />
                 </div>
                 <p>Adicine seus acompanhantes antes de confirmar</p>
                 <button onClick={handleAddCompanion}>
@@ -137,7 +157,34 @@ export const ConfirmarPresenca = () => {
                         ))}
                     </div>
                 )}
-                <button type="button" onClick={confirmarPresenca}>
+
+                <div>
+                    <label>Você irá se hospedar no hotel Matrix?</label>
+                    <div>
+                        <label>
+                            <input
+                                type="radio"
+                                name="matrix"
+                                value="true"
+                                checked={matrix === true}
+                                onChange={() => setMatrix(true)}
+                            />
+                            Sim
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="matrix"
+                                value="false"
+                                checked={matrix === false}
+                                onChange={() => setMatrix(false)}
+                            />
+                            Não
+                        </label>
+                    </div>
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                </div>
+                <button type="submit">
                     {user.presence ? 'Cancelar confirmação' : 'Confirmar'}
                 </button>
 
@@ -150,7 +197,7 @@ export const ConfirmarPresenca = () => {
                         <p>Você confirmou presença</p>
                     </div>
                 )}
-            </div>
+            </form>
 
             <form onSubmit={handleSubmit}>
                 <label>Deixe sua mensagem de carinho:</label>
@@ -162,7 +209,7 @@ export const ConfirmarPresenca = () => {
                     placeholder="Digite aqui sua mensagem para os noivos..."
                 ></textarea>
 
-                <button type="submit">Enviar</button>
+                <button type="submit">Enviar mensagem</button>
             </form>
             {status && <p>{status}</p>}
         </div>

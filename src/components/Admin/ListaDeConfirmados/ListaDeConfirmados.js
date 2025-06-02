@@ -29,27 +29,37 @@ export const ListaDeConfirmados = () => {
             {isLoading && <Loading />}
             <h1>Lista de Confirmados</h1>
             {usuarios.map((usuario, index) => (
-                <div key={index}>
+                <div key={index} className="cardMensagem">
                     {usuario.presence && (
-                        <ul className="cardMensagem">
-                            <li>
-                                <strong>{usuario.name}</strong>
-                                <strong> - Whatsapp: {usuario.fone}</strong>
-                                {usuario.companions &&
-                                    usuario.companions.length > 0 && (
-                                        <ul>
-                                            {usuario.companions.map(
-                                                (companion, idx) => (
-                                                    <li key={idx}>
-                                                        {companion.name}
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
+                        <div>
+                            <ul>
+                                <li>
+                                    <h2>{usuario.name}</h2>
+                                    <strong>Whatsapp: {usuario.fone}</strong>
+                                    {usuario.matrix ? (
+                                        <strong>
+                                            {' '}
+                                            - Hotel Matrix ✅ {usuario.matrix}
+                                        </strong>
+                                    ) : (
+                                        ''
                                     )}
-                            </li>
+                                    {usuario.companions &&
+                                        usuario.companions.length > 0 && (
+                                            <ul>
+                                                {usuario.companions.map(
+                                                    (companion, idx) => (
+                                                        <li key={idx}>
+                                                            {companion.name}
+                                                        </li>
+                                                    )
+                                                )}
+                                            </ul>
+                                        )}
+                                </li>
+                            </ul>
                             <hr />
-                        </ul>
+                        </div>
                     )}
                 </div>
             ))}

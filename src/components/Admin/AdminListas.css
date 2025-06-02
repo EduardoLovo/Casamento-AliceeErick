@@ -8,7 +8,8 @@
 
 .content-listas-admin ul {
     width: 90vw;
-    padding: 0 1rem;
+    padding: 10px 30px;
+    /* margin: 10px 0; */
 }
 
 .cardMensagem {
@@ -22,7 +23,9 @@
 }
 
 .cardMensagem div {
-    min-height: 200px;
+    min-height: 100px;
+    color: aliceblue;
+    background-color: rgba(75, 75, 75, 0.774);
 }
 
 /* RESPONSIVO */
