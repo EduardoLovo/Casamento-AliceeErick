@@ -7,14 +7,14 @@ export const Header = () => {
     const userData = localStorage.getItem('user');
     const user = userData ? JSON.parse(userData) : null;
 
+    console.log(user);
+
     return (
         <div className="cabecalho">
-            {user.role === 'admin' ? (
+            {user.role === 'admin' && (
                 <Link to="/admin">
                     <button>Admin</button>
                 </Link>
-            ) : (
-                ''
             )}
             <Link to="/home">
                 <button>Pagina Inicial</button>
@@ -28,9 +28,11 @@ export const Header = () => {
             <Link to="/confirmar-presenca">
                 <button>Confirmar Presença</button>
             </Link>
-            <Link to="/manual-do-convidado">
-                <button>Manual do Convidado</button>
-            </Link>
+            {user.presence === true && (
+                <Link to="/manual-do-convidado">
+                    <button>Manual do Convidado</button>
+                </Link>
+            )}
             <LogoutButton />
         </div>
     );

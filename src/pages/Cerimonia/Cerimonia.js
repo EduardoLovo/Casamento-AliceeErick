@@ -16,13 +16,11 @@ export const Cerimonia = () => {
         lng: -51.44252021534339,
     };
 
-   
-
     const localCerimonia = {
         lat: -23.559012308637133,
         lng: -51.51777071534339,
     };
-    
+
     return (
         <div className="cerimonia-container">
             <h1>Cerimônia</h1>
