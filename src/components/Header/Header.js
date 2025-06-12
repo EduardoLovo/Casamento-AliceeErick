@@ -7,8 +7,6 @@ export const Header = () => {
     const userData = localStorage.getItem('user');
     const user = userData ? JSON.parse(userData) : null;
 
-    console.log(user);
-
     return (
         <div className="cabecalho">
             {user?.role === 'admin' && (
