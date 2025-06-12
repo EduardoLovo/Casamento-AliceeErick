@@ -11,15 +11,18 @@ export const Cerimonia = () => {
         marginTop: '20px',
     };
 
-    const center = {
-        lat: -23.556028887180172, // exemplo: São Paulo
-        lng: -51.43968780267969,
+    const hotel = {
+        lat: -23.556471452380162, // exemplo: São Paulo
+        lng: -51.44252021534339,
     };
 
+   
+
     const localCerimonia = {
-        lat: -23.558736940234493,
-        lng: -51.51478809897782,
+        lat: -23.559012308637133,
+        lng: -51.51777071534339,
     };
+    
     return (
         <div className="cerimonia-container">
             <h1>Cerimônia</h1>
@@ -57,10 +60,10 @@ export const Cerimonia = () => {
                 >
                     <GoogleMap
                         mapContainerStyle={containerStyle}
-                        center={center}
+                        center={hotel}
                         zoom={12}
                     >
-                        <Marker position={center} />
+                        <Marker position={hotel} />
                     </GoogleMap>
                 </LoadScript>
             </div>
