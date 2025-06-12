@@ -1,0 +1,51 @@
+/* Fonte moderna e leve */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.manual-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.manual-container h1 {
+    font-size: 2.6rem;
+    color: #ff7e5f;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.manual-container p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 16px;
+    text-align: justify;
+}
+
+.manual-container p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Estilizando destaques (caso queira aplicar spans ou classes especiais) */
+.manual-container .highlight {
+    font-weight: 600;
+    color: #ff7e5f;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+    .manual-container {
+        padding: 16px;
+    }
+    .manual-container h1 {
+        font-size: 2.2rem;
+    }
+    .manual-container p {
+        font-size: 1rem;
+    }
+}

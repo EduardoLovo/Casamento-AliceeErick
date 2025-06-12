@@ -24,7 +24,7 @@ export const ListaDePresentes = () => {
         loadData();
     }, []);
 
-    console.log(vendas);
+    console.log(vendas, 'ola');
 
     return (
         <div className="content-listas-admin">

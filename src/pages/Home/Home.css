@@ -1,69 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap');
-.content-home {
-    background-image: url('/public/static/papel2.jpg');
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-}
-.imagem-principal {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    object-position: center top;
-    object-position: 50% 20%;
-    object-position: 50% 70%;
-    border-bottom: 1px solid #daa520;
+/* Fonte do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
 }
 
-.titulo-casal {
-    padding: 0;
-    margin: 0;
-    width: 100%;
+.content-home {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     text-align: center;
-    position: absolute;
-    top: 70vh;
-    color: rgb(255, 255, 255);
+}
+
+.imagem-principal {
+    max-width: 50%;
+    height: auto;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    object-fit: cover;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .titulo-casal h1 {
-    font-family: 'Ballet', cursive;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 10vw;
-    text-align: center;
+    font-size: 5rem;
+    font-family: 'Tangerine', cursive;
     color: #d3c013;
+    margin-bottom: 10px;
 }
 
-.titulo-casal img {
-    width: 100vw; /* ou ajuste como preferir */
-    object-fit: cover; /* mantém proporção cortando se necessário */
-    margin-top: 0;
-    padding-top: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
+h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
-    .titulo-casal {
-        top: 80%; /* mais baixo proporcionalmente */
-    }
+p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    text-align: justify;
+    padding: 0 10px;
+    color: #555;
+}
 
+/* Responsivo */
+@media (max-width: 600px) {
     .titulo-casal h1 {
-        font-size: 12vw; /* aumenta um pouco no mobile */
-    }
-}
-
-@media (max-width: 480px) {
-    .titulo-casal {
-        top: 80%; /* ainda mais centralizado no mobile pequeno */
+        font-size: 2.2rem;
     }
 
-    .titulo-casal h1 {
-        font-size: 14vw; /* aumenta mais para melhor leitura */
+    .imagem-principal {
+        max-width: 90%;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    p {
+        font-size: 1rem;
     }
 }

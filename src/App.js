@@ -8,12 +8,16 @@ import { Checkout } from './pages/Checkout/Checkout';
 import { Admin } from './pages/Admin/Admin';
 import { ListAllConfirmeds } from './components/Admin/listAllConfimeds';
 import { Carrinho } from './pages/Carrinho/Carrinho';
+import { Loja } from './components/Loja/Loja';
+import { Header } from './components/Header/Header';
+import { Cerimonia } from './pages/Cerimonia/Cerimonia';
+import { ManualDoConvidado } from './pages/ManualDoConvidado/ManualDoConvidado';
 
 function App() {
     return (
         <div className="App">
+            <Header />
             <div className="borda">
-                {/* <Header /> */}
                 <Routes>
                     <Route path="/" element={<LoginRegister />} />
                     <Route
@@ -29,10 +33,26 @@ function App() {
                         }
                     />
                     <Route
+                        path="/cerimonia"
+                        element={
+                            <PrivateRoute redirectTo="/">
+                                <Cerimonia />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
                         path="/confirmar-presenca"
                         element={
                             <PrivateRoute redirectTo="/">
                                 <ConfirmarPresenca />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/lista-de-presentes"
+                        element={
+                            <PrivateRoute redirectTo="/">
+                                <Loja />
                             </PrivateRoute>
                         }
                     />
@@ -57,6 +77,14 @@ function App() {
                         element={
                             <PrivateRoute redirectTo="/">
                                 <Carrinho />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/manual-do-convidado"
+                        element={
+                            <PrivateRoute redirectTo="/">
+                                <ManualDoConvidado />
                             </PrivateRoute>
                         }
                     />

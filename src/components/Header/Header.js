@@ -3,7 +3,7 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 import LogoutButton from '../Logout/Logout';
 
-export const Header = ({ onLojaClick, onConfirmarClick }) => {
+export const Header = () => {
     const userData = localStorage.getItem('user');
     const user = userData ? JSON.parse(userData) : null;
 
@@ -16,13 +16,22 @@ export const Header = ({ onLojaClick, onConfirmarClick }) => {
             ) : (
                 ''
             )}
-            <button onClick={onLojaClick}>Lista de Presentes</button>
-            <div className="botoes-direita">
-                <button onClick={onConfirmarClick} className="link-cabecalho">
-                    Confirmar Presença
-                </button>
-                <LogoutButton />
-            </div>
+            <Link to="/home">
+                <button>Pagina Inicial</button>
+            </Link>
+            <Link to="/lista-de-presentes">
+                <button>Lista de Presentes</button>
+            </Link>
+            <Link to="/cerimonia">
+                <button>Cerimônia</button>
+            </Link>
+            <Link to="/confirmar-presenca">
+                <button>Confirmar Presença</button>
+            </Link>
+            <Link to="/manual-do-convidado">
+                <button>Manual do Convidado</button>
+            </Link>
+            <LogoutButton />
         </div>
     );
 };
