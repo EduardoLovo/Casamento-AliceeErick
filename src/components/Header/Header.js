@@ -11,7 +11,7 @@ export const Header = () => {
 
     return (
         <div className="cabecalho">
-            {user.role === 'admin' && (
+            {user?.role === 'admin' && (
                 <Link to="/admin">
                     <button>Admin</button>
                 </Link>
@@ -28,7 +28,7 @@ export const Header = () => {
             <Link to="/confirmar-presenca">
                 <button>Confirmar Presença</button>
             </Link>
-            {user.presence === true && (
+            {user?.presence === true && (
                 <Link to="/manual-do-convidado">
                     <button>Manual do Convidado</button>
                 </Link>
